@@ -24,6 +24,7 @@ frontend/.vite/
 *.env
 !.env.example
 !backend/.env.example
+!frontend/.env.example
 
 # SQLite database files containing local user data
 backend/database/*.db

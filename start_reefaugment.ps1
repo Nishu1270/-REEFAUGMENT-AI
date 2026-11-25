@@ -20,11 +20,11 @@ if (-not (Test-Path $FrontendModules)) {
 Write-Host "Starting ReefAugment AI Backend (http://127.0.0.1:8000)..." -ForegroundColor Cyan
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$RootDir\backend'; & '.\.venv\Scripts\python.exe' -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload"
 
-Write-Host "Starting ReefAugment AI Frontend (http://localhost:5173)..." -ForegroundColor Cyan
+Write-Host "Starting ReefAugment AI Frontend (http://localhost:5173/-REEFAUGMENT-AI/)..." -ForegroundColor Cyan
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$RootDir\frontend'; npm run dev"
 
 Write-Host ""
 Write-Host "ReefAugment AI is launching in two terminal windows:" -ForegroundColor Green
-Write-Host "  Frontend App : http://localhost:5173"
+Write-Host "  Frontend App : http://localhost:5173/-REEFAUGMENT-AI/"
 Write-Host "  Backend API  : http://127.0.0.1:8000"
 Write-Host "  Swagger Docs : http://127.0.0.1:8000/docs"

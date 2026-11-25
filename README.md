@@ -167,10 +167,27 @@ npm run dev
 
 ## Local Application URLs
 
-- **Frontend Web App:** [http://localhost:5173](http://localhost:5173)
+- **Frontend Web App:** [http://localhost:5173/-REEFAUGMENT-AI/](http://localhost:5173/-REEFAUGMENT-AI/)
 - **Backend API Base URL:** [http://127.0.0.1:8000](http://127.0.0.1:8000)
 - **Interactive API Docs (Swagger UI):** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 - **Health Check Endpoint:** [http://127.0.0.1:8000/api/health](http://127.0.0.1:8000/api/health)
+
+---
+
+## GitHub Pages Deployment (Frontend)
+
+The frontend is pre-configured for GitHub Pages deployment at `https://Nishu1270.github.io/-REEFAUGMENT-AI/`:
+
+- `frontend/vite.config.js` sets `base: '/-REEFAUGMENT-AI/'`.
+- `frontend/src/App.jsx` passes `basename={import.meta.env.BASE_URL}` to `<BrowserRouter>`.
+- `frontend/src/services/api.js` reads the backend URL from `VITE_API_URL` (`import.meta.env.VITE_API_URL`) and never falls back to `localhost` or `127.0.0.1` in production builds.
+- `.github/workflows/deploy.yml` builds `frontend/` and deploys `frontend/dist` (with `404.html` SPA fallback) via official GitHub Pages actions.
+
+### GitHub Repository Settings to Enable
+
+1. Open **Settings → Pages** in `Nishu1270/-REEFAUGMENT-AI` and set **Source** to **GitHub Actions**.
+2. Open **Settings → Secrets and variables → Actions → Variables** and create a repository variable named `VITE_API_URL` pointing to your deployed HTTPS FastAPI backend URL (e.g. `https://your-backend-url.example.com`, with no trailing slash). Ensure your deployed backend `CORS_ORIGINS` includes `https://nishu1270.github.io`.
+3. Push to `main` (or trigger the **Deploy Frontend to GitHub Pages** workflow manually from the **Actions** tab).
 
 ---
 
@@ -212,6 +229,6 @@ cd C:\Users\maddi\ReefAugment-AI\backend
 - **Frontend shows `Backend Offline`**:
   Ensure Uvicorn is running on `http://127.0.0.1:8000` and check `/api/health`.
 - **Port 8000 or 5173 already in use**:
-  Stop the conflicting process or change the port and update `VITE_API_BASE_URL` / `CORS_ORIGINS` accordingly.
+  Stop the conflicting process or change the port and update `VITE_API_URL` / `CORS_ORIGINS` accordingly.
 - **Windows Application Control / Smart App Control blocks `stringzilla` (`albucore>=0.0.18`) on Python 3.14**:
   `backend/requirements.txt` intentionally pins `albumentations==1.4.18` and `albucore==0.0.17` (which do not depend on `stringzilla`), keeping the backend compatible with Python 3.14 on Windows without disabling system security policies. If you prefer newer Albumentations releases, create `backend\.venv` with Python 3.12 or 3.13 instead.
