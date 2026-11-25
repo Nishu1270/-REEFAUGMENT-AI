@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-multipart
+sqlalchemy
+pillow
+numpy
+opencv-python-headless
+albumentations==1.4.18
+albucore==0.0.17
+pytest
+httpx

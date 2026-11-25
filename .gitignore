@@ -1,0 +1,48 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+backend/.venv/
+
+# Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+dist/
+build/
+
+# Node.js / Vite frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Local environment files
+.env
+*.env
+!.env.example
+!backend/.env.example
+
+# SQLite database files containing local user data
+backend/database/*.db
+backend/database/*.sqlite
+backend/database/*.sqlite3
+*.db
+
+# User uploaded and generated image storage
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/outputs/*
+!backend/outputs/.gitkeep
+backend/database/*
+!backend/database/.gitkeep
+
+# Temporary exports & logs
+backend/temp_exports/
+temp_exports/
+*.zip
+*.log
+.DS_Store
+Thumbs.db
